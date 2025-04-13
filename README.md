@@ -58,12 +58,7 @@ Design a **relational MySQL database** to manage and organize bookstore operatio
 
 ---
 
-## User & Role Management
-
-```sql
-CREATE USER 'store_admin'@'localhost' IDENTIFIED BY 'StrongPassword123';
-GRANT ALL PRIVILEGES ON BookStoreDB.* TO 'store_admin'@'localhost';
-FLUSH PRIVILEGES;
+## Sample Queries
 
 Sample SQL Queries
 Books by a specific author
@@ -83,8 +78,6 @@ GROUP BY o.order_id;
 
 Files in This Repo
 bookstore_schema.sql – SQL script to create all tables
-
-sample_queries.sql – Example SQL queries to test the database
 
 bookstore_erd.png – Visual ERD of the database schema
 
