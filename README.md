@@ -59,6 +59,7 @@ Design a **relational MySQL database** to manage and organize bookstore operatio
 
 ---
 
+
 ## Sample SQL Queries
 
 Sample SQL Queries
