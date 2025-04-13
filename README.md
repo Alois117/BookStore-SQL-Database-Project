@@ -50,11 +50,11 @@ Design a **relational MySQL database** to manage and organize bookstore operatio
 
 ## Key Features
 
-- ✅ Normalized table design
-- ✅ Primary and foreign key constraints
-- ✅ Many-to-many and one-to-many relationships handled
-- ✅ User creation and role-based privileges
-- ✅ Sample queries to retrieve business insights
+-  Normalized table design
+-  Primary and foreign key constraints
+-  Many-to-many and one-to-many relationships handled
+-  User creation and role-based privileges
+-  Sample queries to retrieve business insights
 
 ---
 
