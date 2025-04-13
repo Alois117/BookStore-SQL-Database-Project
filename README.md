@@ -9,6 +9,7 @@ The goal is to build a clean, efficient database structure with optimized data t
 ---
 
 ## Tools and Technologies
+
 - **MySQL** – Database management
 - **Draw.io** – Database schema design and ERD visualization
 - **GitHub** – Project version control and submission
@@ -28,37 +29,38 @@ Design a **relational MySQL database** to manage and organize bookstore operatio
 
 ## Tables Created
 
-| Table Name         | Description                                                  |
-|--------------------|--------------------------------------------------------------|
-| `book`             | All books available in the store                             |
-| `author`           | List of authors                                              |
-| `book_author`      | Many-to-many relationship between books and authors          |
-| `book_language`    | Possible languages a book can be in                          |
-| `publisher`        | List of book publishers                                      |
-| `customer`         | Bookstore customers                                          |
-| `address`          | Addresses (used by customers)                                |
-| `customer_address` | Links customers with their addresses and address status      |
-| `address_status`   | Status of the address (current, old, etc.)                   |
-| `country`          | Countries of the addresses                                   |
-| `cust_order`       | Orders placed by customers                                   |
-| `order_line`       | Books included in each order                                 |
-| `shipping_method`  | Available shipping methods                                   |
-| `order_status`     | Current status of an order                                   |
-| `order_history`    | Tracks status history of an order                            |
+| Table Name         | Description                                             |
+| ------------------ | ------------------------------------------------------- |
+| `book`             | All books available in the store                        |
+| `author`           | List of authors                                         |
+| `book_author`      | Many-to-many relationship between books and authors     |
+| `book_language`    | Possible languages a book can be in                     |
+| `publisher`        | List of book publishers                                 |
+| `customer`         | Bookstore customers                                     |
+| `address`          | Addresses (used by customers)                           |
+| `customer_address` | Links customers with their addresses and address status |
+| `address_status`   | Status of the address (current, old, etc.)              |
+| `country`          | Countries of the addresses                              |
+| `cust_order`       | Orders placed by customers                              |
+| `order_line`       | Books included in each order                            |
+| `shipping_method`  | Available shipping methods                              |
+| `order_status`     | Current status of an order                              |
+| `order_history`    | Tracks status history of an order                       |
 
 ---
 
 ## Key Features
 
--  Normalized table design
--  Primary and foreign key constraints
--  Many-to-many and one-to-many relationships handled
--  User creation and role-based privileges
--  Sample queries to retrieve business insights
+- Normalized table design
+- Primary and foreign key constraints
+- Many-to-many and one-to-many relationships handled
+- User creation and role-based privileges
+- Sample queries to retrieve business insights
 
 ---
 
-## Sample Queries
+
+## Sample SQL Queries
 
 Sample SQL Queries
 Books by a specific author
@@ -70,11 +72,10 @@ JOIN author a ON ba.author_id = a.author_id
 WHERE a.last_name = 'Smith';
 Order totals
 
-SELECT o.order_id, SUM(ol.quantity * ol.price) AS total_value
+SELECT o.order_id, SUM(ol.quantity \* ol.price) AS total_value
 FROM cust_order o
 JOIN order_line ol ON o.order_id = ol.order_id
 GROUP BY o.order_id;
-
 
 Files in This Repo
 bookstore_schema.sql – SQL script to create all tables
@@ -82,7 +83,6 @@ bookstore_schema.sql – SQL script to create all tables
 bookstore_erd.png – Visual ERD of the database schema
 
 README.md – Project description and setup instructions
-
 
 Contact
 Project by: The Pioneers Group

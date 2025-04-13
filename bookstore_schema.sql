@@ -133,11 +133,41 @@ CREATE TABLE order_history (
 
 --3. Create Users and Roles
 
--- Create a new database user
-CREATE USER 'store_admin'@'localhost' IDENTIFIED BY 'StrongPassword123';
+--- Create Roles
+CREATE ROLE 'admin_role';
+CREATE ROLE 'sales_role';
+CREATE ROLE 'shipping_role';
+CREATE ROLE 'readonly_role';
 
--- Grant full privileges to the new user for this database
-GRANT ALL PRIVILEGES ON BookStoreDB.* TO 'store_admin'@'localhost';
+-- Grant Privileges to Roles
+GRANT ALL PRIVILEGES ON bookstore.* TO 'admin_role';
 
--- Apply the privilege changes
+GRANT SELECT, INSERT, UPDATE ON bookstore.customer TO 'sales_role';
+GRANT SELECT, INSERT, UPDATE ON bookstore.cust_order TO 'sales_role';
+GRANT SELECT, INSERT, UPDATE ON bookstore.order_line TO 'sales_role';
+
+GRANT SELECT, UPDATE ON bookstore.cust_order TO 'shipping_role';
+GRANT SELECT, INSERT ON bookstore.order_history TO 'shipping_role';
+GRANT SELECT ON bookstore.shipping_method TO 'shipping_role';
+
+GRANT SELECT ON bookstore.* TO 'readonly_role';
+
+-- Create Users and Assign Roles
+CREATE USER 'admin_user'@'localhost' IDENTIFIED BY 'AdminPass123!';
+GRANT 'admin_role' TO 'admin_user'@'localhost';
+SET DEFAULT ROLE 'admin_role' TO 'admin_user'@'localhost';
+
+CREATE USER 'sales_user'@'localhost' IDENTIFIED BY 'SalesPass123!';
+GRANT 'sales_role' TO 'sales_user'@'localhost';
+SET DEFAULT ROLE 'sales_role' TO 'sales_user'@'localhost';
+
+CREATE USER 'shipping_user'@'localhost' IDENTIFIED BY 'ShipPass123!';
+GRANT 'shipping_role' TO 'shipping_user'@'localhost';
+SET DEFAULT ROLE 'shipping_role' TO 'shipping_user'@'localhost';
+
+CREATE USER 'readonly_user'@'localhost' IDENTIFIED BY 'ReadOnly123!';
+GRANT 'readonly_role' TO 'readonly_user'@'localhost';
+SET DEFAULT ROLE 'readonly_role' TO 'readonly_user'@'localhost';
+
+-- Finalize privileges
 FLUSH PRIVILEGES;
